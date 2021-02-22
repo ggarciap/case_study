@@ -10,7 +10,10 @@ sys.path.append('..')
 
 import config 
 from datetime import datetime
-start_time = datetime.now()
+#start_time = datetime.now()
+
+print('Populating seller_addresses_xref, it might take a couple of seconds...')
+
 
 connection = psycopg2.connect(host=config.DB_HOST, database=config.DB_NAME, user=config.DB_USER, password=config.DB_PASS)
 print(connection)
@@ -91,6 +94,8 @@ for seller in dib_sellers_files:
                 break
 
 connection.commit()
+connection.close()
 # Duration: 0:04:08.431591
 # end_time = datetime.now()
 # print('Duration: {}'.format(end_time - start_time))
+print('seller_addresses_xref was successfully popluated!')

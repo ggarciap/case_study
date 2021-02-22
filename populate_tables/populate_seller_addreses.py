@@ -10,8 +10,11 @@ sys.path.append('..')
 
 import config 
 
+print('Populating seller_addresses, it might take a couple of seconds...')
+
+
 connection = psycopg2.connect(host=config.DB_HOST, database=config.DB_NAME, user=config.DB_USER, password=config.DB_PASS)
-print(connection)
+
 cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 dib_sellers_files = ['seller_addresses']
 unique_ids = []
@@ -49,3 +52,4 @@ for seller in dib_sellers_files:
                 print ("Exception TYPE:", type(err))
                 
 connection.commit()
+print('seller_addresses was successfully popluated!')

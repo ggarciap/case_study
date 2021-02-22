@@ -10,6 +10,8 @@ sys.path.append('..')
 
 import config 
 
+print('Populating stdib_dibssellers, it might take a couple of seconds...')
+
 connection = psycopg2.connect(host=config.DB_HOST, database=config.DB_NAME, user=config.DB_USER, password=config.DB_PASS)
 print(connection)
 cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
@@ -58,4 +60,7 @@ for seller in dib_sellers_files:
             except Exception as err:
                 print ("Oops! An exception has occured:", err)
                 print ("Exception TYPE:", type(err))
+                
 connection.commit()
+connection.close()
+print('stdib_dibssellers was successfully popluated!')

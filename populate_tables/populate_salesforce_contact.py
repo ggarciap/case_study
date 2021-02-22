@@ -12,6 +12,9 @@ import config
 from datetime import datetime
 # start_time = datetime.now()
 
+print('Populating salesforce_contact_records, it might take a couple of seconds...')
+
+
 connection = psycopg2.connect(host=config.DB_HOST, database=config.DB_NAME, user=config.DB_USER, password=config.DB_PASS)
 print(connection)
 cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
@@ -71,6 +74,9 @@ for seller in dib_sellers_files:
                 break
 
 connection.commit()
+connection.close()
+
 # EDIT: Duration: 0:00:30.389694
 # end_time = datetime.now()
 # print('Duration: {}'.format(end_time - start_time))
+print('salesforce_contact_records was successfully popluated!')
