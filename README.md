@@ -13,7 +13,7 @@ Pull postgres image from docker hub:
 
 Create docker container `postgres_case_study`:
 
-    docker run -d --name postgres_case_study -p 8080:8080 -e POSTGRES_PASSWORD=password postgres:latest
+    docker run -d --name postgres_case_study -p 5432:5432 -e POSTGRES_PASSWORD=password postgres:latest
 
 Execute this command to make the script runnable:
     
