@@ -55,4 +55,4 @@ for seller in dib_sellers_files:
                 print ("Exception TYPE:", type(err))
                 
 connection.commit()
-print('seller_addresses was successfully popluated!\n')
+print('seller_addresses was successfully populated!\n')

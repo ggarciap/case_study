@@ -23,7 +23,7 @@ Execute this command to make the script runnable:
 
 Once we have a container we can execute the shell script that will create and populate the database known as first_dibs:
 
-    /.job.sh
+    ./job.sh
 
 Note: All of the scripts take a couple of seconds to run except `populate_seller_addresses_xref.py` which takes **approx. 4 min**.
 

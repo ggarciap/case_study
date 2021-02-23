@@ -82,4 +82,4 @@ connection.close()
 # EDIT: Duration: 0:00:30.623822
 # end_time = datetime.now()
 # print('Duration: {}'.format(end_time - start_time))
-print('salesforce_account_records was successfully popluated!\n')
+print('salesforce_account_records was successfully populated!\n')

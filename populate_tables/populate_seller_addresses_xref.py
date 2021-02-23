@@ -101,4 +101,4 @@ connection.close()
 # Duration: 0:04:08.431591
 # end_time = datetime.now()
 # print('Duration: {}'.format(end_time - start_time))
-print('seller_addresses_xref was successfully popluated!\n')
+print('seller_addresses_xref was successfully populated!\n')
