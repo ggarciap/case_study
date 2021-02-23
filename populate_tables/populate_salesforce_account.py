@@ -5,11 +5,14 @@ import csv
 import pandas as pd
 import numpy as np
 import sys
+import os 
 
-sys.path.append('..')
-
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
 import config 
-from datetime import datetime
+
+#from datetime import datetime
 #start_time = datetime.now()
 
 print('Populating salesforce_account_records, it might take a couple of seconds...')
@@ -20,7 +23,7 @@ print(connection)
 cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 dib_sellers_files = ['salesforce_account_records']
 for seller in dib_sellers_files:
-    with open (f"../data/{seller}.csv") as f:
+    with open (f"./data/{seller}.csv") as f:
         reader = csv.reader(f)
         next(reader) # Avoiding Headers
         for row in reader:
@@ -79,4 +82,4 @@ connection.close()
 # EDIT: Duration: 0:00:30.623822
 # end_time = datetime.now()
 # print('Duration: {}'.format(end_time - start_time))
-print('salesforce_account_records was successfully popluated!')
+print('salesforce_account_records was successfully popluated!\n')

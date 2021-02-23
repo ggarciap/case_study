@@ -5,8 +5,11 @@ import csv
 import pandas as pd
 import numpy as np
 import sys
+import os 
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
 
-sys.path.append('..')
 
 import config 
 
@@ -19,7 +22,7 @@ cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 dib_sellers_files = ['seller_addresses']
 unique_ids = []
 for seller in dib_sellers_files:
-    with open (f"../data/{seller}.csv") as f:
+    with open (f"./data/{seller}.csv") as f:
         reader = csv.reader(f)
         next(reader) # Avoiding Headers
         for row in reader:
@@ -52,4 +55,4 @@ for seller in dib_sellers_files:
                 print ("Exception TYPE:", type(err))
                 
 connection.commit()
-print('seller_addresses was successfully popluated!')
+print('seller_addresses was successfully popluated!\n')

@@ -6,13 +6,16 @@ import pandas as pd
 import numpy as np
 import sys
 
-sys.path.append('..')
+import os 
+currentdir = os.path.dirname(os.path.realpath(__file__))
+parentdir = os.path.dirname(currentdir)
+sys.path.append(parentdir)
 
 import config 
 from datetime import datetime
 #start_time = datetime.now()
 
-print('Populating seller_addresses_xref, it might take a couple of seconds...')
+print('Populating seller_addresses_xref, it might take a couple of minutes(approx. 4)...')
 
 
 connection = psycopg2.connect(host=config.DB_HOST, database=config.DB_NAME, user=config.DB_USER, password=config.DB_PASS)
@@ -20,7 +23,7 @@ print(connection)
 cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)
 dib_sellers_files = ['seller_address_xref']
 for seller in dib_sellers_files:
-    with open (f"../data/{seller}.csv") as f:
+    with open (f"./data/{seller}.csv") as f:
         reader = csv.reader(f)
         next(reader) # Avoiding Headers
         for row in reader:
@@ -98,4 +101,4 @@ connection.close()
 # Duration: 0:04:08.431591
 # end_time = datetime.now()
 # print('Duration: {}'.format(end_time - start_time))
-print('seller_addresses_xref was successfully popluated!')
+print('seller_addresses_xref was successfully popluated!\n')

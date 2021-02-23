@@ -1,15 +1,4 @@
-from sqlalchemy import create_engine
-import pandas as pd
-import numpy
-import config
-import os 
-import csv
-
-print('Creating FINAL_FORMAT.csv')
-
-engine = create_engine('postgresql+psycopg2://'+ config.DB_USER + ':' + config.DB_PASS +'@'+ config.DB_HOST + '/first_dibs')
-master_q = """
-
+CREATE TABLE final_format AS
 
 WITH CT1 AS (
     SELECT  seller_pk ,
@@ -110,7 +99,7 @@ SELECT  seller_pk,
                         WHEN seller_status_code LIKE 'closed.ar' THEN 'Closed - AR'
                         WHEN seller_status_code LIKE 'internal.am' THEN 'Internal - AM'
                         ELSE  (CONCAT(INITCAP(SPLIT_PART(seller_status_code, '.', 1)), ' - ', INITCAP(SPLIT_PART(seller_status_code, '.', 2))))
-                    END
+                    END 
                 ELSE seller_status_code
             END AS seller_status_code,
         seller_rating,
@@ -127,12 +116,3 @@ SELECT  seller_pk,
         account_id as seller_account_id
 FROM CT4 LEFT JOIN salesforce_account_records ON seller_pk = seller_pk_salesforce_account_records;
 
-
-
-
-"""
-
-
-temp_df_master = pd.read_sql_query(master_q, engine)
-with open('FINAL_FORMAT.csv', 'w') as file:
-    temp_df_master.to_csv('FINAL_FORMAT.csv', index=False)
