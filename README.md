@@ -1,6 +1,6 @@
 # case_study
 ## About
-This repository contains the schema and necessary scripts for creating a postgres database with the csv files found in `./data`. Furthermore, for implementing this case study I decided to run the databse in `Docker` due to the advantages of fast installation and capability of allowing developers  use different operating systems when working on big project. 
+This repository contains the schema and necessary scripts for creating a postgres database with the csv files found in `./data`. Furthermore, for implementing this case study I decided to run the databse in `Docker` due to the advantages of fast installation and capability of allowing developers use different operating systems. 
 
 After following all the instructions described below a file named `FINAL_FORMAT.csv` will be created on the root directory and the schema `db_schema.sql` will be present on the postgres container under the database name: `first_dibs`.  
 
@@ -34,4 +34,4 @@ To access the postgres docker instance:
 ## Data WareHousing 
 For a data warehousing considerations  we could use services such as Redshift or Snowflake, in this way we can have a scalability, query speed and low data warehousing costs.
 
-For this case study I decided to create a table (representing the final format desired) in the postgres database but in reality if we had the opportunity to use a DW we could take into our advantage the fact these solutions exist on top of serveral databases and with having that in mind that we could perfom a query similar to `master_query.sql` in our DW solution which can then be used for generating business intelligence and performing data analytics with tools such as Tableau.
+For this case study I decided to create a table (representing the final format desired) in the postgres database but in reality if we had the opportunity to use a DW we could take into our advantage the fact these solutions exist on top of serveral databases and we could perfom a query similar to `master_query.sql` in our DW solution which can then be used for generating business intelligence and performing data analytics with tools such as Tableau.
