@@ -66,4 +66,4 @@ for seller in dib_sellers_files:
 
 connection.commit()
 connection.close()
-print('stdib_dibssellers was successfully popluated!\n')
+print('stdib_dibssellers was successfully populated!\n')
