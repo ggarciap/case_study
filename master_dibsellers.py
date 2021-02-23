@@ -7,7 +7,7 @@ import csv
 
 print('Creating FINAL_FORMAT.csv')
 
-engine = create_engine('postgresql+psycopg2://'+ config.DB_USER + ':' + config.DB_PASS +'@'+ config.DB_HOST + '/first_dibs')
+engine = create_engine('postgresql+psycopg2://'+ config.DB_USER + ':' + config.DB_PASS +'@'+ config.DB_HOST + ':' +str(config.DB_PORT)+'/first_dibs')
 master_q = """
 
 
@@ -110,11 +110,11 @@ SELECT  seller_pk,
                         WHEN seller_status_code LIKE 'closed.ar' THEN 'Closed - AR'
                         WHEN seller_status_code LIKE 'internal.am' THEN 'Internal - AM'
                         ELSE  (CONCAT(INITCAP(SPLIT_PART(seller_status_code, '.', 1)), ' - ', INITCAP(SPLIT_PART(seller_status_code, '.', 2))))
-                    END
+                    END 
                 ELSE seller_status_code
-            END AS seller_status_code,
+            END AS seller_status_full,
         seller_rating,
-        seller_registered,
+        seller_registered AS seller_registered_date,
         seller_agreement_start_date,
         seller_destinguished,
         seller_default_state,

@@ -25,6 +25,10 @@ Once we have a container we can execute the shell script that will create and po
 
 Note: All of the scripts take a couple of seconds to run except `populate_seller_addresses_xref.py` which takes approx. 4 min.
 
+To access the postgres docker instance:
+
+    docker exec -it postgres_case_study psql -U postgres
+
 ## Data WareHousing 
 For a data warehousing tools we could use services such as Redshift or Snowflake, in this way we can have a scalability, query speed and low data warehousing costs.
 

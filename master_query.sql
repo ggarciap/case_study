@@ -101,9 +101,9 @@ SELECT  seller_pk,
                         ELSE  (CONCAT(INITCAP(SPLIT_PART(seller_status_code, '.', 1)), ' - ', INITCAP(SPLIT_PART(seller_status_code, '.', 2))))
                     END 
                 ELSE seller_status_code
-            END AS seller_status_code,
+            END AS seller_status_full,
         seller_rating,
-        seller_registered,
+        seller_registered AS seller_registered_date,
         seller_agreement_start_date,
         seller_destinguished,
         seller_default_state,
